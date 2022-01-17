@@ -2,14 +2,16 @@
 " https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 
-source $HOME/.config/nvim/plug-config/coc.vim  
+source $HOME/.config/nvim/plug-config/coc.vim 
+let g:python3_host_prog=expand('~/virtualenvs/neovim/venv/bin/python3.9')
+let g:ctrlp_max_files=0
 
 set nocompatible " iMproved, required
 filetype off     " required
 set termguicolors
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'morhetz/gruvbox'
+Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -18,12 +20,14 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
+Plug 'ryanoasis/vim-devicons'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
-colorscheme gruvbox
+let g:gruvbox_baby_function_style = "NONE"
+let g:gruvbox_baby_keyword_style = "italic"
 
-let g:airline_theme='gruvbox'
+colorscheme gruvbox-baby
 
 lua require 'colorizer'.setup()
 
@@ -34,7 +38,8 @@ syntax on
 set colorcolumn=80
 set background=dark
 highlight ColorColumn ctermbg=0 guibg=lightgrey
-set number
+set number                     " Show current line number
+set relativenumber             " Show relative line numbers
 set nowrap
 set smartcase
 set hlsearch
@@ -46,9 +51,11 @@ set smartindent
 set noswapfile
 set backspace=indent,eol,start
 set autoindent
-
+set guifont=Hack\ Nerd\ Font\ Mono\ 12
+hi Normal guibg=NONE ctermbg=NONE
 " Tabs
 let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#fnamemode=':t'
 nmap <leader>1 :bp<CR>
 nmap <leader>2 :bn<CR>
