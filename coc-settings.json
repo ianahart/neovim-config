@@ -11,5 +11,7 @@
     "typescript",
     "typescriptreact",
     "python"
- ]
+ ],
+ "prettier.tabWidth": 2,
+ "prettier.singleQuote": true
 }

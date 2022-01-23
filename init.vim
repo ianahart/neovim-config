@@ -5,13 +5,15 @@
 source $HOME/.config/nvim/plug-config/coc.vim 
 let g:python3_host_prog=expand('~/virtualenvs/neovim/venv/bin/python3.9')
 let g:ctrlp_max_files=0
+let g:ctrlp_cmd='CtrlP :pwd'
 
 set nocompatible " iMproved, required
 filetype off     " required
 set termguicolors
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
+" Plug 'morhetz/gruvbox'
+Plug 'mhartington/oceanic-next'
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -22,12 +24,17 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
+Plug 'python/black'
 call plug#end()
 
-let g:gruvbox_baby_function_style = "NONE"
-let g:gruvbox_baby_keyword_style = "italic"
+" let g:airline_theme='gruvbox'
+" colorscheme gruvbox
 
-colorscheme gruvbox-baby
+let g:airline_theme='base16_oceanicnext'
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+colorscheme OceanicNext
+
 
 lua require 'colorizer'.setup()
 
@@ -52,7 +59,18 @@ set noswapfile
 set backspace=indent,eol,start
 set autoindent
 set guifont=Hack\ Nerd\ Font\ Mono\ 12
+
+
+
+highlight LineNr term=bold cterm=NONE guifg=#059e97  guibg=NONE
+
 hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi SignColumn guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
+
+
+
 " Tabs
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show = 1
