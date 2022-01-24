@@ -12,10 +12,9 @@ filetype off     " required
 set termguicolors
 
 call plug#begin('~/.config/nvim/plugged')
-" Plug 'morhetz/gruvbox'
-Plug 'mhartington/oceanic-next'
 Plug 'tpope/vim-fugitive'
 Plug 'preservim/nerdtree'
+Plug 'joshdick/onedark.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
@@ -30,10 +29,9 @@ call plug#end()
 " let g:airline_theme='gruvbox'
 " colorscheme gruvbox
 
-let g:airline_theme='base16_oceanicnext'
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNext
+let g:airline_theme='onedark'
+colorscheme onedark
+
 
 
 lua require 'colorizer'.setup()
