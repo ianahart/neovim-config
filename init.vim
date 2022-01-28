@@ -6,6 +6,7 @@ source $HOME/.config/nvim/plug-config/coc.vim
 let g:python3_host_prog=expand('~/virtualenvs/neovim/venv/bin/python3.9')
 let g:ctrlp_max_files=0
 let g:ctrlp_cmd='CtrlP :pwd'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|vendor'
 
 set nocompatible " iMproved, required
 filetype off     " required
@@ -13,8 +14,9 @@ set termguicolors
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-fugitive'
+" Plug 'morhetz/gruvbox'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'preservim/nerdtree'
-Plug 'joshdick/onedark.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
@@ -28,10 +30,8 @@ call plug#end()
 
 " let g:airline_theme='gruvbox'
 " colorscheme gruvbox
-
-let g:airline_theme='onedark'
-colorscheme onedark
-
+let g:lightline = { 'colorscheme': 'challenger_deep'}
+colorscheme challenger_deep
 
 
 lua require 'colorizer'.setup()
@@ -60,7 +60,7 @@ set guifont=Hack\ Nerd\ Font\ Mono\ 12
 
 
 
-highlight LineNr term=bold cterm=NONE guifg=#059e97  guibg=NONE
+highlight LineNr term=bold cterm=NONE guifg=#059e97  guibg=NONE " Change gutter line number color
 
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
@@ -75,3 +75,4 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#fnamemode=':t'
 nmap <leader>1 :bp<CR>
 nmap <leader>2 :bn<CR>
+
