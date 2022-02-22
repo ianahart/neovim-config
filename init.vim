@@ -4,20 +4,20 @@
 
 source $HOME/.config/nvim/plug-config/coc.vim 
 let g:python3_host_prog=expand('~/virtualenvs/neovim/venv/bin/python3.9')
-let g:ctrlp_max_files=0
-let g:ctrlp_cmd='CtrlP :pwd'
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|vendor'
 
 set nocompatible " iMproved, required
 filetype off     " required
 set termguicolors
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-fugitive'
-" Plug 'morhetz/gruvbox'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+" Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'ellisonleao/gruvbox.nvim'
 Plug 'preservim/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -29,15 +29,62 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
+colorscheme gruvbox
+let g:airline_theme='base16_gruvbox_light_hard'
 
-" let g:airline_theme='gruvbox'
-" colorscheme gruvbox
-let g:lightline = { 'colorscheme': 'challenger_deep'}
-colorscheme challenger_deep
-
+" Challenge Deep ColorScheme
+" let g:lightline = { 'colorscheme': 'challenger_deep'}
+" colorscheme challenger_deep
 
 lua require 'colorizer'.setup()
 
+
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+  indent = {
+    enable = true,
+    disable = {},
+  },
+  ensure_installed = {
+     "tsx",
+    "javascript",
+    "html",
+    "php",
+    "json",
+    "markdown",
+    "css",
+    "python"
+ },
+  autotag = {
+    enable = true,
+  }
+}
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
+
+local actions = require("telescope.actions")
+
+ require("telescope").setup({
+    defaults = {
+        mappings = {
+            i = {
+                ["<esc>"] = actions.close,
+            },
+        },
+    file_ignore_patterns = { "node_modules",
+    "build", "vendor", "bin", "include", "venv"}
+    },
+})
+
+
+
+EOF
 
 map <silent> <C-n> :NERDTreeFocus<CR>
 filetype plugin indent on " required
@@ -68,6 +115,14 @@ hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE ctermbg=NONE
 hi EndOfBuffer guibg=NONE ctermbg=NONE
+
+
+
+" Telescope
+nnoremap <silent> ;f <cmd>Telescope find_files<cr>
+nnoremap <silent> ;r <cmd>Telescope live_grep<cr>
+nnoremap <silent> \\ <cmd>Telescope buffers<cr>
+nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
 
 
 

@@ -1,4 +1,5 @@
 {
+  "signature.target": "echo",  
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "sass",
