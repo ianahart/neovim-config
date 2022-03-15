@@ -12,7 +12,8 @@ set termguicolors
 call plug#begin('~/.config/nvim/plugged')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-fugitive'
-" Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'preservim/nerdtree'
 Plug 'nvim-lua/popup.nvim'
@@ -29,12 +30,19 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
-colorscheme gruvbox
-let g:airline_theme='base16_gruvbox_light_hard'
+" Gruvbox
+" colorscheme gruvbox
+" let g:airline_theme='base16_gruvbox_dark_soft'
 
 " Challenge Deep ColorScheme
 " let g:lightline = { 'colorscheme': 'challenger_deep'}
 " colorscheme challenger_deep
+
+" Embark ColorScheme
+colorscheme embark
+let g:lightline = {
+      \ 'colorscheme': 'embark',
+      \ }
 
 lua require 'colorizer'.setup()
 
@@ -58,7 +66,8 @@ require'nvim-treesitter.configs'.setup {
     "json",
     "markdown",
     "css",
-    "python"
+    "python",
+    "vue"
  },
   autotag = {
     enable = true,
@@ -78,13 +87,14 @@ local actions = require("telescope.actions")
             },
         },
     file_ignore_patterns = { "node_modules",
-    "build", "vendor", "bin", "include", "venv"}
+    "build", "vendor",  ".gitignore", "bin", "include", "venv", "__pycache__", "migrations"}
     },
 })
 
 
 
 EOF
+
 
 map <silent> <C-n> :NERDTreeFocus<CR>
 filetype plugin indent on " required
@@ -93,8 +103,10 @@ set colorcolumn=80
 set background=dark
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 set number                     " Show current line number
-set relativenumber             " Show relative line numbers
+set relativenumber" Show relative line numbers
 set nowrap
+set list
+set listchars=trail:*
 set smartcase
 set hlsearch
 set noerrorbells
@@ -125,7 +137,6 @@ nnoremap <silent> \\ <cmd>Telescope buffers<cr>
 nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
 
 
-
 " Tabs
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -154,9 +165,19 @@ let s:white = "FFFFFF"
 let s:rspec_red = 'FE405F'
 let s:git_orange = 'F54D27'
 
+
+
+
+
+
+
+
+
+
+
 let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreeExtensionHighlightColor['css'] = s:blue " sets the color of css files to blue
-
+let NERDTreeShowHidden=1
 let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange " sets the color for .gitignore files
 
