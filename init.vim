@@ -28,75 +28,25 @@ Plug 'sheerun/vim-polyglot'
 Plug 'python/black'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
-
+Plug 'tjdevries/colorbuddy.vim'
+Plug 'tjdevries/gruvbuddy.nvim'
 call plug#end()
 " Gruvbox
 " colorscheme gruvbox
-" let g:airline_theme='base16_gruvbox_dark_soft'
+let g:airline_theme='base16_gruvbox_dark_soft'
 
 " Challenge Deep ColorScheme
 " let g:lightline = { 'colorscheme': 'challenger_deep'}
 " colorscheme challenger_deep
 
 " Embark ColorScheme
-colorscheme embark
-let g:lightline = {
-      \ 'colorscheme': 'embark',
-      \ }
+" colorscheme embark
+" let g:lightline = {
+"       \ 'colorscheme': 'embark',
+  "    \ }
 
-lua require 'colorizer'.setup()
+lua require('config')
 
-
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-    disable = {},
-  },
-  indent = {
-    enable = true,
-    disable = {},
-  },
-  ensure_installed = {
-     "tsx",
-    "javascript",
-    "html",
-    "php",
-    "json",
-    "markdown",
-    "css",
-    "python",
-    "vue"
- },
-  autotag = {
-    enable = true,
-  }
-}
-
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.tsx.filetype_to_parsername = { "javascript", "typescript.tsx" }
-
-local actions = require("telescope.actions")
-
- require("telescope").setup({
-    defaults = {
-        mappings = {
-            i = {
-                ["<esc>"] = actions.close,
-            },
-        },
-    file_ignore_patterns = { "node_modules",
-    "build", "vendor",  ".gitignore", "bin", "include", "venv", "__pycache__", "migrations"}
-    },
-})
-
-
-
-EOF
-
-
-map <silent> <C-n> :NERDTreeFocus<CR>
 filetype plugin indent on " required
 syntax on
 set colorcolumn=80
@@ -132,7 +82,7 @@ hi EndOfBuffer guibg=NONE ctermbg=NONE
 
 " Telescope
 nnoremap <silent> ;f <cmd>Telescope find_files<cr>
-nnoremap <silent> ;r <cmd>Telescope live_grep<cr>
+nnoremap <silent> ;r <^cmd>Telescope live_grep<cr>
 nnoremap <silent> \\ <cmd>Telescope buffers<cr>
 nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
 
@@ -165,25 +115,14 @@ let s:white = "FFFFFF"
 let s:rspec_red = 'FE405F'
 let s:git_orange = 'F54D27'
 
-
-
-
-
-
-
-
-
-
-
+map <silent> <C-n> :NERDTreeFocus<CR>
 let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreeExtensionHighlightColor['css'] = s:blue " sets the color of css files to blue
 let NERDTreeShowHidden=1
 let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange " sets the color for .gitignore files
-
 let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets the color for files ending with _spec.rb
-
 let g:WebDevIconsDefaultFolderSymbolColor = s:beige " sets the color for folders that did not match any rule
 let g:WebDevIconsDefaultFileSymbolColor = s:blue " sets the color for files that did not match any rule
 
