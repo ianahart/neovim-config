@@ -1,9 +1,9 @@
-" curl -fLO $HOME/.config/nvim/autoload/plug.vim \     
+" curl -fLO $HOME/.config/nvim/autoload/plug.vim \
 " https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 
-source $HOME/.config/nvim/plug-config/coc.vim 
-let g:python3_host_prog=expand('~/virtualenvs/neovim/venv/bin/python3.9')
+source $HOME/.config/nvim/plug-config/coc.vim
+let g:python3_host_prog=expand('~/virtualenvs/neovim/venv/bin/python3.10')
 
 set nocompatible " iMproved, required
 filetype off     " required
@@ -13,8 +13,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-fugitive'
 Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-Plug 'ellisonleao/gruvbox.nvim'
 Plug 'preservim/nerdtree'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -25,25 +23,20 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
-Plug 'python/black'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'tjdevries/gruvbuddy.nvim'
 call plug#end()
-" Gruvbox
-" colorscheme gruvbox
-let g:airline_theme='base16_gruvbox_dark_soft'
 
-" Challenge Deep ColorScheme
-" let g:lightline = { 'colorscheme': 'challenger_deep'}
-" colorscheme challenger_deep
 
-" Embark ColorScheme
-" colorscheme embark
-" let g:lightline = {
-"       \ 'colorscheme': 'embark',
-  "    \ }
+ " let g:airline_theme='base16_gruvbox_dark_soft'
+"  Embark ColorScheme
+colorscheme embark
+let g:lightline = { 'colorscheme': 'embark'}
+let g:embark_terminal_italics = 1
+
+
 
 lua require('config')
 
@@ -68,7 +61,7 @@ set noswapfile
 set backspace=indent,eol,start
 set autoindent
 set guifont=Hack\ Nerd\ Font\ Mono\ 12
-
+set guifont=3270-Medium\ Nerd\ Font\ Complete\ 22
 
 
 highlight LineNr term=bold cterm=NONE guifg=#059e97  guibg=NONE " Change gutter line number color
@@ -125,4 +118,5 @@ let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid err
 let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets the color for files ending with _spec.rb
 let g:WebDevIconsDefaultFolderSymbolColor = s:beige " sets the color for folders that did not match any rule
 let g:WebDevIconsDefaultFileSymbolColor = s:blue " sets the color for files that did not match any rule
-
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
