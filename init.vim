@@ -12,10 +12,14 @@ set termguicolors
 call plug#begin('~/.config/nvim/plugged')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-fugitive'
-Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
+
+
+" Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
+Plug 'arcticicestudio/nord-vim'
 Plug 'preservim/nerdtree'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
@@ -29,16 +33,18 @@ Plug 'tjdevries/colorbuddy.vim'
 Plug 'tjdevries/gruvbuddy.nvim'
 call plug#end()
 
+colorscheme nord
 
- " let g:airline_theme='base16_gruvbox_dark_soft'
 "  Embark ColorScheme
-colorscheme embark
-let g:lightline = { 'colorscheme': 'embark'}
-let g:embark_terminal_italics = 1
+" colorscheme embark
+" let g:lightline = { 'colorscheme': 'embark'}
+" let g:embark_terminal_italics = 1
+
 
 
 
 lua require('config')
+
 
 filetype plugin indent on " required
 syntax on
@@ -66,13 +72,11 @@ set guifont=3270-Medium\ Nerd\ Font\ Complete\ 22
 
 highlight LineNr term=bold cterm=NONE guifg=#059e97  guibg=NONE " Change gutter line number color
 
-hi Normal guibg=NONE ctermbg=NONE
-hi LineNr guibg=NONE ctermbg=NONE
-hi SignColumn guibg=NONE ctermbg=NONE
-hi EndOfBuffer guibg=NONE ctermbg=NONE
-
-
-
+" Transparent background
+" hi Normal guibg=NONE ctermbg=NONE
+" hi LineNr guibg=NONE ctermbg=NONE
+" hi SignColumn guibg=NONE ctermbg=NONE
+" hi EndOfBuffer guibg=NONE ctermbg=NONE
 " Telescope
 nnoremap <silent> ;f <cmd>Telescope find_files<cr>
 nnoremap <silent> ;r <^cmd>Telescope live_grep<cr>

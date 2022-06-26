@@ -1,6 +1,9 @@
 
 require 'colorizer'.setup()
 -- require('colorbuddy').colorscheme('gruvbuddy')
+--
+
+
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
