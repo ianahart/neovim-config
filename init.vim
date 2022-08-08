@@ -14,8 +14,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-fugitive'
 
 
-" Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
-Plug 'arcticicestudio/nord-vim'
+Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'preservim/nerdtree'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -33,13 +33,14 @@ Plug 'tjdevries/colorbuddy.vim'
 Plug 'tjdevries/gruvbuddy.nvim'
 call plug#end()
 
-colorscheme nord
+let g:tokyonight_transparent = 1
+let g:tokyonight_italic_keywords = 0
+colorscheme tokyonight
+let g:airline_theme='supernova'
 
 "  Embark ColorScheme
-" colorscheme embark
 " let g:lightline = { 'colorscheme': 'embark'}
 " let g:embark_terminal_italics = 1
-
 
 
 
@@ -73,15 +74,32 @@ set guifont=3270-Medium\ Nerd\ Font\ Complete\ 22
 highlight LineNr term=bold cterm=NONE guifg=#059e97  guibg=NONE " Change gutter line number color
 
 " Transparent background
-" hi Normal guibg=NONE ctermbg=NONE
-" hi LineNr guibg=NONE ctermbg=NONE
-" hi SignColumn guibg=NONE ctermbg=NONE
-" hi EndOfBuffer guibg=NONE ctermbg=NONE
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi SignColumn guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
 " Telescope
 nnoremap <silent> ;f <cmd>Telescope find_files<cr>
 nnoremap <silent> ;r <^cmd>Telescope live_grep<cr>
 nnoremap <silent> \\ <cmd>Telescope buffers<cr>
 nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
+
+
+
+
+
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+    inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
+    " remap for complete to use tab and <cr>
+    inoremap <silent><expr> <TAB>
+        \ coc#pum#visible() ? coc#pum#next(1):
+        \ <SID>check_back_space() ? "\<Tab>" :
+        \ coc#refresh()
+    inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+    inoremap <silent><expr> <c-space> coc#refresh()
+
+    hi CocSearch ctermfg=12 guifg=#18A3FF
+    hi CocMenuSel ctermbg=109 guibg=#13354A
 
 
 " Tabs
