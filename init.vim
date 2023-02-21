@@ -12,10 +12,8 @@ set termguicolors
 call plug#begin('~/.config/nvim/plugged')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-fugitive'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
-
-Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'preservim/nerdtree'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -30,19 +28,27 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tjdevries/colorbuddy.vim'
+Plug 'Yazeed1s/oh-lucy.nvim'
 Plug 'tjdevries/gruvbuddy.nvim'
 call plug#end()
 
-let g:tokyonight_transparent = 1
-let g:tokyonight_italic_keywords = 0
-colorscheme tokyonight
+" let g:tokyonight_transparent = 1
+" let g:tokyonight_italic_keywords = 0
+" let g:airline_theme='supernova'
+" colorscheme oh-lucy
+
+colorscheme catppuccin
+
+
+
+
 let g:airline_theme='supernova'
 
-"  Embark ColorScheme
-" let g:lightline = { 'colorscheme': 'embark'}
-" let g:embark_terminal_italics = 1
+let g:java_highlight_all = 1
 
+let g:oh_lucy_transparent_background = 1
 
+let g:transparent_background = 1
 
 lua require('config')
 
