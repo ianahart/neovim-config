@@ -13,7 +13,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-fugitive'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'preservim/nerdtree'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -35,7 +35,7 @@ call plug#end()
 " let g:tokyonight_transparent = 1
 " let g:tokyonight_italic_keywords = 0
 " let g:airline_theme='supernova'
-" colorscheme oh-lucy
+
 
 colorscheme catppuccin
 
@@ -90,6 +90,8 @@ nnoremap <silent> ;r <^cmd>Telescope live_grep<cr>
 nnoremap <silent> \\ <cmd>Telescope buffers<cr>
 nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
 
+" do not close the preview tab when switching to other buffers
+let g:mkdp_auto_close = 0
 
 
 
