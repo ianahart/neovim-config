@@ -1,7 +1,7 @@
 {
-  "signature.target": "echo",  
+  "signature.target": "echo",
   "coc.preferences.formatOnSaveFiletypes": [
-     "html",
+    "html",
     "css",
     "sass",
     "scss",
@@ -13,13 +13,15 @@
     "typescript",
     "typescriptreact",
     "python",
+    "astro",
     "java"
- ],
- "prettier.tabWidth": 2,
- "prettier.printWidth": 90,
-"prettier.singleQuote": true,
-"tsserver.tsdk": "/Users/owner/.config/coc/extensions/node_modules/coc-tsserver/node_modules/typescript/lib"
+  ],
+  "prettier.tabWidth": 2,
+  "prettier.printWidth": 120,
+  "prettier.singleQuote": true,
+  "tsserver.tsdk": "/Users/owner/.config/coc/extensions/node_modules/coc-tsserver/node_modules/typescript/lib",
 
+   "java.format.comments.enabled": true,
+  "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+  "java.completion.overwrite": true,
 }
-
-

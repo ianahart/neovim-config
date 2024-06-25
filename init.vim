@@ -7,15 +7,23 @@ let g:python3_host_prog=expand('~/virtualenvs/neovim/venv/bin/python3.10')
 
 set nocompatible " iMproved, required
 filetype off     " required
-set termguicolors
+if has('nvim') || has('termguicolors')
+  set termguicolors
+endif
+
+
+
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-fugitive'
+Plug 'jparise/vim-graphql'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'AhmedAbdulrahman/vim-aylin'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'preservim/nerdtree'
 Plug 'nvim-lua/popup.nvim'
+Plug 'wuelnerdotexe/vim-astro'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'nvim-telescope/telescope.nvim'
@@ -27,28 +35,21 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
-Plug 'tjdevries/colorbuddy.vim'
-Plug 'Yazeed1s/oh-lucy.nvim'
-Plug 'tjdevries/gruvbuddy.nvim'
+
 call plug#end()
-
-" let g:tokyonight_transparent = 1
-" let g:tokyonight_italic_keywords = 0
-" let g:airline_theme='supernova'
-
-
-colorscheme catppuccin
-
 
 
 
 let g:airline_theme='supernova'
+let g:astro_typescript = 'enable'
+
+
+
+
+
 
 let g:java_highlight_all = 1
-
-let g:oh_lucy_transparent_background = 1
-
-let g:transparent_background = 1
+" let g:transparent_background = 1
 
 lua require('config')
 
@@ -58,6 +59,8 @@ syntax on
 set colorcolumn=80
 set background=dark
 highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+
 set number                     " Show current line number
 set relativenumber" Show relative line numbers
 set nowrap
@@ -77,13 +80,16 @@ set guifont=Hack\ Nerd\ Font\ Mono\ 12
 set guifont=3270-Medium\ Nerd\ Font\ Complete\ 22
 
 
-highlight LineNr term=bold cterm=NONE guifg=#059e97  guibg=NONE " Change gutter line number color
+highlight LineNr term=bold cterm=NONE guifg=#059e97  guibg=NONE "
+
+highlight EndOfBuffer guifg=#059e97
 
 " Transparent background
-hi Normal guibg=NONE ctermbg=NONE
-hi LineNr guibg=NONE ctermbg=NONE
-hi SignColumn guibg=NONE ctermbg=NONE
-hi EndOfBuffer guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
+" hi LineNr guibg=NONE ctermbg=NONE
+" hi SignColumn guibg=NONE ctermbg=NONE
+" hi EndOfBuffer guibg=NONE ctermbg=NONE
+
 " Telescope
 nnoremap <silent> ;f <cmd>Telescope find_files<cr>
 nnoremap <silent> ;r <^cmd>Telescope live_grep<cr>
