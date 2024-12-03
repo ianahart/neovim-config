@@ -8,9 +8,8 @@ let g:python3_host_prog=expand('~/virtualenvs/neovim/venv/bin/python3.10')
 set nocompatible " iMproved, required
 filetype off     " required
 if has('nvim') || has('termguicolors')
-  set termguicolors
+set termguicolors
 endif
-
 
 
 
@@ -95,6 +94,7 @@ nnoremap <silent> ;f <cmd>Telescope find_files<cr>
 nnoremap <silent> ;r <^cmd>Telescope live_grep<cr>
 nnoremap <silent> \\ <cmd>Telescope buffers<cr>
 nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
+
 
 " do not close the preview tab when switching to other buffers
 let g:mkdp_auto_close = 0
